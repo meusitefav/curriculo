@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anderson Pereira – Analista de Dados</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #f8f7f4;
+      --surface:   #ffffff;
+      --border:    #e8e4de;
+      --accent:    #3a6ea5;
+      --accent-lt: #eef3f9;
+      --text:      #1e1e1e;
+      --muted:     #6b6b6b;
+      --tag-bg:    #eef3f9;
+      --tag-text:  #2d5b8e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(248,247,244,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: 0.01em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 7rem 2rem 5rem;
+    }
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 1.4rem;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 2.2rem;
+      line-height: 1.75;
+    }
+    .hero-contacts {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+    }
+    .contact-pill {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-size: 0.83rem; font-weight: 500;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.35rem 1rem;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .contact-pill:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-pill svg { flex-shrink: 0; }
+
+    /* DIVIDER */
+    .divider {
+      max-width: 760px; margin: 0 auto;
+      border: none; border-top: 1px solid var(--border);
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.8rem;
+    }
+
+    /* HABILIDADES */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
+      display: flex; align-items: center; gap: 0.6rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .skill-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 10px rgba(58,110,165,0.08);
+    }
+    .skill-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0;
+    }
+
+    /* FORMAÇÃO */
+    .edu-list { display: flex; flex-direction: column; gap: 1.4rem; }
+    .edu-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem;
+    }
+    .edu-course {
+      font-weight: 600; font-size: 0.95rem;
+      color: var(--text); margin-bottom: 0.2rem;
+    }
+    .edu-inst { font-size: 0.85rem; color: var(--muted); }
+    .edu-badge {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-size: 0.72rem; font-weight: 500;
+      background: var(--tag-bg); color: var(--tag-text);
+      border-radius: 999px; padding: 0.2rem 0.7rem;
+    }
+
+    /* EXPERIÊNCIA */
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 1px 1fr;
+      gap: 0 1.6rem;
+    }
+    .exp-line {
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .exp-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0; margin-top: 4px;
+    }
+    .exp-track {
+      flex: 1; width: 1px; background: var(--border); margin: 4px 0;
+    }
+    .exp-item:last-child .exp-track { display: none; }
+    .exp-body { padding-bottom: 2rem; }
+    .exp-role {
+      font-weight: 600; font-size: 0.95rem;
+      color: var(--text); margin-bottom: 0.15rem;
+    }
+    .exp-company { font-size: 0.85rem; color: var(--accent); margin-bottom: 0.2rem; }
+    .exp-period { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.5rem; }
+    .exp-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+    /* CURSOS */
+    .course-list { display: flex; flex-direction: column; gap: 1rem; }
+    .course-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 1rem; flex-wrap: wrap;
+    }
+    .course-name {
+      font-weight: 600; font-size: 0.93rem;
+      color: var(--text); margin-bottom: 0.2rem;
+    }
+    .course-inst { font-size: 0.82rem; color: var(--muted); }
+    .course-desc { font-size: 0.82rem; color: var(--muted); margin-top: 0.4rem; line-height: 1.6; }
+    .course-badge {
+      font-size: 0.72rem; font-weight: 500; white-space: nowrap;
+      background: var(--tag-bg); color: var(--tag-text);
+      border-radius: 999px; padding: 0.25rem 0.8rem;
+      align-self: flex-start;
+    }
+    .course-badge.done {
+      background: #edf7f0; color: #2a7a4b;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">Anderson Pereira</span>
+    <ul class="nav-links">
+      <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#formacao">Formação</a></li>
+      <li><a href="#experiencia">Experiência</a></li>
+      <li><a href="#cursos">Cursos</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-eyebrow">Portfólio Profissional</p>
+    <h1>Dados que<br/><span>geram decisões.</span></h1>
+    <p class="hero-desc">
+      Analista de Dados em formação, desenvolvendo habilidades em SQL, Python, limpeza e visualização de dados.
+    </p>
+    <div class="hero-contacts">
+      <a class="contact-pill" href="mailto:Andersonpereira2015ofi@gmail.com">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Andersonpereira2015ofi@gmail.com
+      </a>
+      <a class="contact-pill" href="tel:+5599991036490">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.14 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.05 2.7h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.71 2.81a2 2 0 0 1-.45 2.11L7.09 10.1a16 16 0 0 0 6.29 6.29l1.46-1.46a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.71A2 2 0 0 1 22 16.92z"/></svg>
+        (99) 99103-6490
+      </a>
+      <span class="contact-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Açailândia – MA &nbsp;·&nbsp; CNH A/B
+      </span>
+    </div>
+  </div>
+  <hr class="divider"/>
+
+  <!-- HABILIDADES -->
+  <section id="habilidades">
+    <p class="section-label">Habilidades</p>
+    <div class="skills-grid">
+      <div class="skill-card"><span class="skill-dot"></span>Análise de Dados</div>
+      <div class="skill-card"><span class="skill-dot"></span>Limpeza de Dados</div>
+      <div class="skill-card"><span class="skill-dot"></span>SQL</div>
+      <div class="skill-card"><span class="skill-dot"></span>Python</div>
+      <div class="skill-card"><span class="skill-dot"></span>Visualização de Dados</div>
+      <div class="skill-card"><span class="skill-dot"></span>Excel & PowerPoint</div>
+      <div class="skill-card"><span class="skill-dot"></span>Comunicação</div>
+      <div class="skill-card"><span class="skill-dot"></span>Trabalho em Equipe</div>
+    </div>
+  </section>
+  <hr class="divider"/>
+
+  <!-- FORMAÇÃO -->
+  <section id="formacao">
+    <p class="section-label">Formação Acadêmica</p>
+    <div class="edu-list">
+      <div class="edu-item">
+        <div class="edu-course">Gestão em Logística</div>
+        <div class="edu-inst">Centro Universitário Unigrande</div>
+        <span class="edu-badge">2024 – 2027 · Em andamento</span>
+      </div>
+      <div class="edu-item">
+        <div class="edu-course">Ensino Médio Completo</div>
+        <div class="edu-inst">Centro de Ensino Professora Norma Suelly</div>
+        <span class="edu-badge">Concluído</span>
+      </div>
+    </div>
+  </section>
+  <hr class="divider"/>
+
+  <!-- EXPERIÊNCIA -->
+  <section id="experiencia">
+    <p class="section-label">Experiência Profissional</p>
+    <div class="exp-list">
+      <div class="exp-item">
+        <div class="exp-line"><div class="exp-dot"></div><div class="exp-track"></div></div>
+        <div class="exp-body">
+          <div class="exp-role">Vendedor</div>
+          <div class="exp-company">Casa do Construtor</div>
+          <div class="exp-period">Jun/2024 – Atual</div>
+          <div class="exp-desc">Atendimento ao cliente, negociação e vendas de produtos e serviços voltados para a construção civil.</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-line"><div class="exp-dot"></div><div class="exp-track"></div></div>
+        <div class="exp-body">
+          <div class="exp-role">Operador de Produção</div>
+          <div class="exp-company">AVB – Aço Verde do Brasil</div>
+          <div class="exp-period">Jun/2022 – Abr/2023</div>
+          <div class="exp-desc">Inspeção e operação no processo produtivo do aço utilizando instrumentos e equipamentos industriais.</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-line"><div class="exp-dot"></div><div class="exp-track"></div></div>
+        <div class="exp-body">
+          <div class="exp-role">Técnico em Refrigeração Automotiva</div>
+          <div class="exp-company">Paiva Ar Condicionado</div>
+          <div class="exp-period">Ago/2021 – Mai/2022</div>
+          <div class="exp-desc">Manutenção e reparo de sistemas de climatização veicular.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <hr class="divider"/>
+
+  <!-- CURSOS -->
+  <section id="cursos">
+    <p class="section-label">Cursos & Qualificações</p>
+    <div class="course-list">
+      <div class="course-item">
+        <div>
+          <div class="course-name">Profissional de Análise de Dados do Google</div>
+          <div class="course-inst">Coursera / CIEE</div>
+          <div class="course-desc">Fundamentos de análise de dados, tomada de decisão baseada em dados, Data Cleaning, SQL, Python, visualização de dados e estudos de caso.</div>
+        </div>
+        <span class="course-badge">Em andamento · Jul/2026</span>
+      </div>
+      <div class="course-item">
+        <div>
+          <div class="course-name">Eletricista Industrial (Profissionalizante)</div>
+          <div class="course-inst">SENAI</div>
+        </div>
+        <span class="course-badge done">Concluído</span>
+      </div>
+      <div class="course-item">
+        <div>
+          <div class="course-name">Informática</div>
+          <div class="course-inst">Net Computer</div>
+        </div>
+        <span class="course-badge done">Concluído</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Anderson da Conceição Pereira · Açailândia, MA
+  </footer>
+
+</body>
+</html>
